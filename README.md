@@ -223,4 +223,6 @@ Both adapters are open work. If you write one, a pull request is welcome.
 MIT. Use it, change it, no need to ask.
 
 Built by [@unclecode](https://x.com/unclecode), author of
-[Crawl4AI](https://github.com/unclecode/crawl4ai).
+[Crawl4AI](https://github.com/unclecode/crawl4ai)
+[![Crawl4AI stars](https://img.shields.io/github/stars/unclecode/crawl4ai?style=social)](https://github.com/unclecode/crawl4ai).
+Follow me on X for what I build next: [x.com/unclecode](https://x.com/unclecode).
