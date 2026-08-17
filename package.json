@@ -1,0 +1,52 @@
+{
+  "name": "toolshrink",
+  "version": "0.1.0",
+  "description": "Reduce large agent tool output by what it means, not by where it was cut.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "adapters/harness/toolshrink.mjs"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "tsx": "^4.23.12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unclecode/toolshrink.git"
+  },
+  "keywords": [
+    "agent",
+    "llm",
+    "context",
+    "tool-output",
+    "truncation",
+    "deepseek-harness",
+    "claude-code",
+    "codex",
+    "context-engineering"
+  ],
+  "author": "unclecode <unclecode@kidocode.com> (https://x.com/unclecode)",
+  "homepage": "https://github.com/unclecode/toolshrink#readme",
+  "bugs": {
+    "url": "https://github.com/unclecode/toolshrink/issues"
+  }
+}
