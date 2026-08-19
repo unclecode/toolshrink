@@ -57,33 +57,27 @@ Every cut follows four rules, taken from the three agents I read:
 - say exactly how much was removed: `... 15,903 characters, 401 lines omitted ...` (from Codex)
 - a second pass changes nothing
 
-## Use it with DeepSeek Harness, complete setup
+## Use it with DeepSeek Harness
 
-Copy-paste the whole block. It installs the library, configures Harness, and
-starts the web UI with toolshrink active.
+One command:
 
 ```sh
-# 1. Get and build the library
-git clone https://github.com/unclecode/toolshrink.git
-cd toolshrink && npm install && npm run build
-
-# 2. Mount the adapter on every Harness start
-mkdir -p ~/.dsh
-cat >> ~/.dsh/cordis.patch.yml <<EOF
-- insert:
-    - id: toolshrink
-      name: $PWD/adapters/harness/toolshrink.mjs
-      config:
-        maxChars: 50000
-EOF
-
-# 3. Run Harness (installs itself through npx on first use)
-npx @deepseek-ai/dsh@latest web
+dsh plugin --profile web add github:unclecode/toolshrink
 ```
 
-`~/.dsh/cordis.patch.yml` is read on every Harness start, for every profile.
-To try toolshrink per run instead, put the same YAML in its own file and pass
-`--patch that-file.yml`.
+That is the whole install. The package carries a `dsh.bundle` manifest, so
+the plugin mounts with a 50,000-character default budget on the next start.
+Change the budget from your own layer, `~/.dsh/cordis.patch.yml`:
+
+```yaml
+- id: toolshrink
+  config:
+    maxChars: 20000
+    log: /tmp/toolshrink.log
+```
+
+Hacking on it instead? Clone, `npm install && npm run build`, and mount the
+adapter file by path with an insert row (see Adapter config below).
 
 ### Adapter config
 
