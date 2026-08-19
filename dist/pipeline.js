@@ -24,6 +24,10 @@ import logReducer from './reducers/log.js';
 import treeReducer from './reducers/tree.js';
 import stacktraceReducer from './reducers/stacktrace.js';
 import repeatReducer from './reducers/repeat.js';
+import lintReducer from './reducers/lint.js';
+import installReducer from './reducers/install.js';
+import csvReducer from './reducers/csv.js';
+import gitlogReducer from './reducers/gitlog.js';
 /**
  * The built-in cuts, in the order they are tried. Most-certain detectors
  * first: a diff and JSON have strict shapes, tests have strong markers, a log
@@ -33,9 +37,13 @@ import repeatReducer from './reducers/repeat.js';
 export const BUILTIN_REDUCERS = [
     diffReducer,
     jsonReducer,
+    csvReducer,
     testsReducer,
     buildReducer,
+    lintReducer,
     stacktraceReducer,
+    gitlogReducer,
+    installReducer,
     logReducer,
     treeReducer,
     repeatReducer,
