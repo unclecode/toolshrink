@@ -1,0 +1,7 @@
+# The toolshrink bundle: mounted when this package is added to a dsh profile.
+# One row; config here is the neutral default, patchable by the layers above.
+- insert:
+    - id: toolshrink
+      name: toolshrink/harness
+      config:
+        maxChars: 50000

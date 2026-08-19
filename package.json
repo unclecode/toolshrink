@@ -9,16 +9,19 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./harness": "./adapters/harness/toolshrink.mjs"
   },
   "files": [
     "dist",
-    "adapters/harness/toolshrink.mjs"
+    "adapters/harness/toolshrink.mjs",
+    "cordis.patch.yml"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepare": "npm run build"
   },
   "license": "MIT",
   "devDependencies": {
@@ -48,5 +51,10 @@
   "homepage": "https://github.com/unclecode/toolshrink#readme",
   "bugs": {
     "url": "https://github.com/unclecode/toolshrink/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   }
 }
