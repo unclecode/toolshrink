@@ -45,9 +45,13 @@ budget.
 | `log` | timestamped logs | errors and warnings with the lines before them, the ending | routine lines |
 | `tree` | find, ls -R, file listings | the structure, 8 entries per directory, counts | crowded directories |
 | `repeat` | retry storms, progress spam | 2 samples per run plus "2,998 similar lines omitted" | consecutive near-identical lines |
+| `lint` | eslint, ruff, clippy | each rule with its count and example locations, worst files | repeated occurrences of the same rule |
+| `install` | npm, pip, pnpm, cargo | the summary, versions, deprecations, vulnerabilities, errors | fetch and download progress |
+| `csv` | CSV, TSV, pipe tables | header, 5 rows from the start, 2 from the end, row and column counts | the rows between |
+| `gitlog` | git log, both formats | the 15 newest commits, the total, the authors with counts | older commits |
 | `size` | everything (fallback) | bash: the end · grep/read: the start · unknown: both ends | the rest, counted |
 
-Nine cuts ship today. Each one is a plain file with a shared interface, so
+Thirteen cuts ship today. Each one is a plain file with a shared interface, so
 adding your own is one file, not a fork.
 
 Every cut follows four rules, taken from the three agents I read:
@@ -191,11 +195,9 @@ request.
 
 | Cut | Recognizes | Would keep |
 | --- | --- | --- |
-| `lint` | eslint, ruff, clippy | issues grouped by rule with counts, the worst files |
-| `install` | npm, pip, cargo install | the summary, versions, vulnerabilities |
-| `csv` | CSV and TSV bodies | header, a few rows, the row count |
-| `gitlog` | git log | recent commits, the total count, the authors |
 | `semantic` | anything, given the agent's current goal | the chunks most relevant to the goal. Two stages: lexical scoring (BM25, no model needed), then optional embedding scoring for meaning beyond shared words |
+| `sql` | query results, EXPLAIN plans | the plan's expensive nodes, sampled result rows |
+| `docker` | build and compose output | the failing layer, the final image, dropped build chatter |
 
 The `semantic` cut is the interesting one: every cut above decides by SHAPE,
 this one would decide by RELEVANCE. It needs one extra input, a query for what
